@@ -22,11 +22,7 @@ Detect which environment the user is in at the start of every session:
 - Tell user where files are saved
 
 **Browser (claude.ai/code):**
-- Do NOT attempt to save to `storage/` — no persistent filesystem
-- Generate HTML inline and tell user to copy-paste and save as `.html`
-- Generate Excel by writing `tools/export-excel.py` output to a temp file and tell user to download it immediately
-- Remind user to save files before closing the session — they will be lost otherwise
-- At end of session display a checklist: ✅ step1.html downloaded? ✅ step1.xlsx downloaded?
+- Follow all rules in `.claude/rules/browser-mode.md`
 
 ## After every session
 Save a `notes.md` inside the job folder with decisions made and open questions.
