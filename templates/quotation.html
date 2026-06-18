@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quotation {{QUOTE_NUMBER}} — Elite Mold Tech</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; font-size: 12px; color: #333; background: #fff; padding: 20px; }
+  .page { max-width: 1000px; margin: 0 auto; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #1a3c6e; padding-bottom: 15px; margin-bottom: 20px; }
+  .company-name { font-size: 20px; font-weight: bold; color: #1a3c6e; }
+  .doc-title { text-align: right; }
+  .doc-title h2 { font-size: 18px; color: #1a3c6e; letter-spacing: 2px; }
+  .doc-title .quote-no { font-size: 13px; color: #f0a500; font-weight: bold; margin-top: 4px; }
+
+  /* Parties */
+  .parties { display: flex; gap: 20px; margin-bottom: 20px; }
+  .party-box { flex: 1; border: 1px solid #ddd; padding: 12px; border-radius: 4px; }
+  .party-box h4 { color: #1a3c6e; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 8px; }
+  .party-box p { margin: 3px 0; }
+
+  /* Section title */
+  .section-title { font-size: 13px; font-weight: bold; color: #1a3c6e; border-left: 4px solid #1a3c6e; padding-left: 8px; margin: 20px 0 10px; }
+
+  /* Parts table */
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th { background: #1a3c6e; color: #fff; padding: 8px 6px; text-align: center; font-size: 11px; }
+  td { border: 1px solid #ddd; padding: 7px 6px; vertical-align: middle; text-align: center; }
+  tr:nth-child(even) td { background: #f9f9f9; }
+  .photo-cell img { max-width: 75px; max-height: 75px; object-fit: contain; }
+  .photo-cell { width: 80px; height: 80px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; font-size: 10px; margin: auto; }
+
+  /* Total row */
+  .total-row td { background: #1a3c6e !important; color: #fff; font-weight: bold; font-size: 13px; }
+
+  /* DFM notes */
+  .dfm-box { border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
+  .dfm-item { padding: 5px 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: 10px; }
+  .dfm-item:last-child { border-bottom: none; }
+
+  /* Terms */
+  .terms { background: #f8f9ff; border: 1px solid #d0d8f0; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
+  .terms ol { padding-left: 20px; }
+  .terms li { margin: 5px 0; }
+
+  /* Stamp area */
+  .stamp-area { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+  .stamp-box { border: 1px solid #ddd; border-radius: 4px; padding: 15px; text-align: center; width: 200px; }
+  .stamp-box p { color: #999; font-size: 10px; margin-top: 40px; }
+
+  /* Footer */
+  .footer { border-top: 2px solid #1a3c6e; padding-top: 10px; display: flex; justify-content: space-between; color: #666; font-size: 10px; }
+
+  /* Internal notes - hidden on print */
+  .internal { background: #fffde7; border: 1px dashed #fbc02d; padding: 10px; margin-bottom: 20px; border-radius: 4px; }
+  .internal h4 { color: #f57f17; margin-bottom: 5px; font-size: 11px; }
+  @media print { .internal { display: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="company-name">ELITE MOLD TECH</div>
+      <div style="color:#666; font-size:11px;">Shenzhen Elite Technology Co., Ltd</div>
+      <div style="color:#666; font-size:11px;">No.2 Baoshi Road, Pingshan, Tangxia Town, Dongguan, China</div>
+    </div>
+    <div class="doc-title">
+      <h2>QUOTATION</h2>
+      <div class="quote-no">No.: {{QUOTE_NUMBER}}</div>
+      <div style="margin-top:6px; font-size:11px; color:#666;">
+        <strong>Date:</strong> {{DATE}}<br>
+        <strong>Valid Until:</strong> {{VALID_UNTIL}}<br>
+        <strong>Process:</strong> {{PROCESS_TYPE}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Parties -->
+  <div class="parties">
+    <div class="party-box">
+      <h4>BUYER</h4>
+      <p><strong>Company:</strong> {{CLIENT_COMPANY}}</p>
+      <p><strong>Contact:</strong> {{CLIENT_CONTACT}}</p>
+      <p><strong>Email:</strong> {{CLIENT_EMAIL}}</p>
+      <p><strong>Tel:</strong> {{CLIENT_TEL}}</p>
+    </div>
+    <div class="party-box">
+      <h4>SELLER</h4>
+      <p><strong>Company:</strong> Shenzhen Elite Technology Co., Ltd</p>
+      <p><strong>Contact:</strong> Phil Huang</p>
+      <p><strong>Email:</strong> phil@elite-tec.com.cn</p>
+      <p><strong>Tel:</strong> +86-0769-23092639 | Cell: 15019487110</p>
+    </div>
+  </div>
+
+  <!-- CNC / 3D Print Table -->
+  <!-- USE THIS TABLE FOR: CNC Machining, 3D Printing -->
+  <div class="section-title">MOULD & PRODUCT PRICE</div>
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Product Name</th>
+        <th>Photo</th>
+        <th>Description</th>
+        <th>Product Size (mm)</th>
+        <th>Weight (g)</th>
+        <th>Material</th>
+        <th>Surface Treatment</th>
+        <th>Product Qty</th>
+        <th>Unit Price (USD)</th>
+        <th>Delivery Time</th>
+        <th>Total Cost (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- REPEAT ROW PER PART -->
+      <tr>
+        <td>1</td>
+        <td>{{PART_NAME}}</td>
+        <td><div class="photo-cell">{{PART_IMAGE}}</div></td>
+        <td>{{DESCRIPTION}}</td>
+        <td>{{DIMENSIONS}}</td>
+        <td>{{WEIGHT}}</td>
+        <td>{{MATERIAL}}</td>
+        <td>{{SURFACE_TREATMENT}}</td>
+        <td>{{QUANTITY}}</td>
+        <td>{{UNIT_PRICE}}</td>
+        <td>{{DELIVERY}}</td>
+        <td>{{TOTAL_COST}}</td>
+      </tr>
+      <!-- TOTAL ROW -->
+      <tr class="total-row">
+        <td colspan="2">TOTAL</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>{{GRAND_TOTAL}} USD</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Injection Mould Table (use instead of above for mould jobs) -->
+  <!-- UNCOMMENT FOR MOULD JOBS AND REMOVE THE TABLE ABOVE
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Product Name</th>
+        <th>Photo</th>
+        <th>Description</th>
+        <th>Product Size (mm)</th>
+        <th>Weight (g)</th>
+        <th>Cavity & Core Steel</th>
+        <th>Runner System</th>
+        <th>Surface Treatment</th>
+        <th>Mould Life</th>
+        <th>Mould Size</th>
+        <th>Mould Weight</th>
+        <th>Injection Machine</th>
+        <th>Delivery Time</th>
+        <th>Mould Price (USD)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>{{PART_NAME}}</td>
+        <td><div class="photo-cell">{{PART_IMAGE}}</div></td>
+        <td>{{DESCRIPTION}}</td>
+        <td>{{DIMENSIONS}}</td>
+        <td>{{WEIGHT}}</td>
+        <td>{{STEEL_GRADE}}</td>
+        <td>{{RUNNER_SYSTEM}}</td>
+        <td>{{SURFACE_TREATMENT}}</td>
+        <td>{{MOULD_LIFE}}</td>
+        <td>{{MOULD_SIZE}}</td>
+        <td>{{MOULD_WEIGHT}}</td>
+        <td>{{MACHINE}}</td>
+        <td>{{DELIVERY}}</td>
+        <td>{{MOULD_PRICE}}</td>
+      </tr>
+      <tr class="total-row">
+        <td colspan="2">TOTAL</td>
+        <td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td>
+        <td>{{GRAND_TOTAL}} USD</td>
+      </tr>
+    </tbody>
+  </table>
+  -->
+
+  <!-- DFM Notes -->
+  <div class="section-title">DFM NOTES</div>
+  <div class="dfm-box">
+    <!-- INCLUDE ONLY RESOLVED/RELEVANT DFM ITEMS FROM STEP 1 -->
+    <div class="dfm-item"><span>✅</span><span>{{DFM_NOTE_1}}</span></div>
+    <div class="dfm-item"><span>⚠️</span><span>{{DFM_NOTE_2}}</span></div>
+  </div>
+
+  <!-- Terms -->
+  <div class="section-title">TERMS & CONDITIONS</div>
+  <div class="terms">
+    <ol>
+      <li>FOB Shenzhen price.</li>
+      <li>Payment term: 50% deposit, 50% before shipment.</li>
+      <li>Country of Origin: China.</li>
+      <li>Quotation valid for 30 days from date of issue.</li>
+      <li>{{ADDITIONAL_TERM_1}}</li>
+    </ol>
+  </div>
+
+  <!-- Internal Notes (hidden on print) -->
+  <div class="internal">
+    <h4>🔒 INTERNAL NOTES (not visible to client)</h4>
+    <p>{{INTERNAL_NOTES}}</p>
+  </div>
+
+  <!-- Stamp -->
+  <div class="stamp-area">
+    <div class="stamp-box">
+      <strong>SHENZHEN ELITE TECHNOLOGY CO LIMITED</strong>
+      <p>Authorized Signature & Stamp</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Elite Mold Tech | phil@elite-tec.com.cn | +86-0769-23092639</span>
+    <span>{{QUOTE_NUMBER}} | {{DATE}}</span>
+  </div>
+
+</div>
+</body>
+</html>

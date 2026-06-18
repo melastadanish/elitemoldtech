@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Requirement Understanding — {{QUOTE_NUMBER}}</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: Arial, sans-serif; font-size: 12px; color: #333; background: #fff; padding: 20px; }
+  .page { max-width: 1000px; margin: 0 auto; }
+
+  /* Header */
+  .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #1a3c6e; padding-bottom: 15px; margin-bottom: 20px; }
+  .company-name { font-size: 20px; font-weight: bold; color: #1a3c6e; }
+  .doc-title { text-align: right; }
+  .doc-title h2 { font-size: 16px; color: #1a3c6e; }
+  .doc-title .badge { background: #f0a500; color: #fff; padding: 3px 10px; border-radius: 3px; font-size: 11px; margin-top: 4px; display: inline-block; }
+
+  /* Parties */
+  .parties { display: flex; gap: 20px; margin-bottom: 20px; }
+  .party-box { flex: 1; border: 1px solid #ddd; padding: 12px; border-radius: 4px; }
+  .party-box h4 { color: #1a3c6e; border-bottom: 1px solid #eee; padding-bottom: 5px; margin-bottom: 8px; }
+  .party-box p { margin: 3px 0; }
+
+  /* Confidence legend */
+  .legend { background: #f8f8f8; border: 1px solid #ddd; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; display: flex; gap: 20px; align-items: center; }
+  .legend span { font-size: 11px; }
+
+  /* Parts table */
+  .section-title { font-size: 13px; font-weight: bold; color: #1a3c6e; border-left: 4px solid #1a3c6e; padding-left: 8px; margin: 20px 0 10px; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+  th { background: #1a3c6e; color: #fff; padding: 8px 6px; text-align: center; font-size: 11px; }
+  td { border: 1px solid #ddd; padding: 7px 6px; vertical-align: top; text-align: center; }
+  tr:nth-child(even) td { background: #f9f9f9; }
+  .photo-cell { width: 80px; height: 80px; background: #eee; display: flex; align-items: center; justify-content: center; color: #999; font-size: 10px; }
+  .photo-cell img { max-width: 75px; max-height: 75px; object-fit: contain; }
+
+  /* Confidence indicators */
+  .ok { color: #27ae60; font-weight: bold; }
+  .warn { color: #f0a500; font-weight: bold; }
+  .missing { color: #e74c3c; font-weight: bold; }
+
+  /* DFM section */
+  .dfm-box { border: 1px solid #ddd; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
+  .dfm-item { padding: 5px 0; border-bottom: 1px solid #f0f0f0; display: flex; gap: 10px; }
+  .dfm-item:last-child { border-bottom: none; }
+  .dfm-flag { min-width: 20px; }
+
+  /* Missing info */
+  .missing-box { background: #fff5f5; border: 1px solid #e74c3c; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
+  .missing-box h4 { color: #e74c3c; margin-bottom: 8px; }
+  .missing-box ul { padding-left: 20px; }
+  .missing-box li { margin: 4px 0; }
+
+  /* Assumptions box */
+  .assumptions-box { background: #fffbf0; border: 1px solid #f0a500; border-radius: 4px; padding: 15px; margin-bottom: 20px; }
+  .assumptions-box h4 { color: #f0a500; margin-bottom: 8px; }
+  .assumptions-box ul { padding-left: 20px; }
+  .assumptions-box li { margin: 4px 0; }
+
+  /* Approval */
+  .approval { border: 2px dashed #1a3c6e; border-radius: 4px; padding: 15px; margin-bottom: 20px; text-align: center; }
+  .approval h4 { color: #1a3c6e; margin-bottom: 8px; }
+  .approval p { color: #666; font-size: 11px; }
+
+  /* Footer */
+  .footer { border-top: 2px solid #1a3c6e; padding-top: 10px; display: flex; justify-content: space-between; color: #666; font-size: 10px; }
+
+  /* Internal notes - not visible when printed */
+  .internal { background: #fffde7; border: 1px dashed #fbc02d; padding: 10px; margin-bottom: 20px; border-radius: 4px; }
+  .internal h4 { color: #f57f17; margin-bottom: 5px; font-size: 11px; }
+  @media print { .internal { display: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <div class="company-name">ELITE MOLD TECH</div>
+      <div style="color:#666; font-size:11px;">Shenzhen Elite Technology Co., Ltd</div>
+    </div>
+    <div class="doc-title">
+      <h2>REQUIREMENT UNDERSTANDING</h2>
+      <div class="badge">INTERNAL — STEP 1 OF 2</div>
+      <div style="margin-top:6px; font-size:11px;">
+        <strong>Ref No.:</strong> {{QUOTE_NUMBER}}<br>
+        <strong>Date:</strong> {{DATE}}<br>
+        <strong>Process:</strong> {{PROCESS_TYPE}}
+      </div>
+    </div>
+  </div>
+
+  <!-- Parties -->
+  <div class="parties">
+    <div class="party-box">
+      <h4>BUYER (CLIENT)</h4>
+      <p><strong>Company:</strong> {{CLIENT_COMPANY}}</p>
+      <p><strong>Contact:</strong> {{CLIENT_CONTACT}}</p>
+      <p><strong>Email:</strong> {{CLIENT_EMAIL}}</p>
+      <p><strong>Tel:</strong> {{CLIENT_TEL}}</p>
+    </div>
+    <div class="party-box">
+      <h4>SELLER</h4>
+      <p><strong>Company:</strong> Shenzhen Elite Technology Co., Ltd</p>
+      <p><strong>Contact:</strong> Phil Huang</p>
+      <p><strong>Email:</strong> phil@elite-tec.com.cn</p>
+      <p><strong>Tel:</strong> +86-0769-23092639 | Cell: 15019487110</p>
+    </div>
+  </div>
+
+  <!-- Confidence Legend -->
+  <div class="legend">
+    <strong>Confidence Key:</strong>
+    <span class="ok">✅ Confirmed</span>
+    <span class="warn">⚠️ Assumed (see assumptions)</span>
+    <span class="missing">❌ Missing (must resolve before Step 2)</span>
+  </div>
+
+  <!-- Parts Table - CNC / 3D Print -->
+  <!-- USE THIS TABLE FOR: CNC Machining, 3D Printing -->
+  <div class="section-title">PARTS SUMMARY</div>
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Product Name</th>
+        <th>Photo</th>
+        <th>Description</th>
+        <th>Dimensions (mm)</th>
+        <th>Weight (g)</th>
+        <th>Qty</th>
+        <th>Tolerances</th>
+        <th>Surface Finish</th>
+        <th>Delivery</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- REPEAT ROW PER PART -->
+      <tr>
+        <td>1</td>
+        <td>{{PART_NAME}}</td>
+        <td><div class="photo-cell">{{PART_IMAGE}}</div></td>
+        <td>{{DESCRIPTION}}</td>
+        <td>{{DIMENSIONS}}</td>
+        <td>{{WEIGHT}}</td>
+        <td>{{QUANTITY}}</td>
+        <td>{{TOLERANCES}}</td>
+        <td>{{SURFACE_FINISH}}</td>
+        <td>{{DELIVERY}}</td>
+        <td>{{CONFIDENCE}}</td>
+      </tr>
+      <!-- TOTALS ROW -->
+      <tr style="font-weight:bold; background:#f0f4ff;">
+        <td colspan="2">TOTAL PARTS</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>{{TOTAL_WEIGHT}}</td>
+        <td>{{TOTAL_QTY}}</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+        <td>/</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Parts Table - Injection Mould (use instead of above for mould jobs) -->
+  <!-- UNCOMMENT THIS TABLE FOR MOULD JOBS AND REMOVE THE TABLE ABOVE
+  <table>
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Product Name</th>
+        <th>Photo</th>
+        <th>Description</th>
+        <th>Product Size (mm)</th>
+        <th>Weight (g)</th>
+        <th>Cavities</th>
+        <th>Runner System</th>
+        <th>Surface Treatment</th>
+        <th>Mould Life</th>
+        <th>Mould Size</th>
+        <th>Injection Machine</th>
+        <th>Delivery</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>{{PART_NAME}}</td>
+        <td><div class="photo-cell">{{PART_IMAGE}}</div></td>
+        <td>{{DESCRIPTION}}</td>
+        <td>{{DIMENSIONS}}</td>
+        <td>{{WEIGHT}}</td>
+        <td>{{CAVITIES}}</td>
+        <td>{{RUNNER}}</td>
+        <td>{{SURFACE}}</td>
+        <td>{{MOULD_LIFE}}</td>
+        <td>{{MOULD_SIZE}}</td>
+        <td>{{MACHINE}}</td>
+        <td>{{DELIVERY}}</td>
+        <td>{{CONFIDENCE}}</td>
+      </tr>
+      <tr style="font-weight:bold; background:#f0f4ff;">
+        <td colspan="2">TOTAL</td>
+        <td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td><td>/</td>
+      </tr>
+    </tbody>
+  </table>
+  -->
+
+  <!-- DFM Analysis -->
+  <div class="section-title">DFM ANALYSIS</div>
+  <div class="dfm-box">
+    <!-- REPEAT PER FLAG -->
+    <div class="dfm-item"><span class="dfm-flag">❌</span><span>{{DFM_ISSUE_1}}</span></div>
+    <div class="dfm-item"><span class="dfm-flag">⚠️</span><span>{{DFM_WARNING_1}}</span></div>
+    <div class="dfm-item"><span class="dfm-flag">✅</span><span>{{DFM_OK_1}}</span></div>
+  </div>
+
+  <!-- Missing Information -->
+  <div class="missing-box">
+    <h4>❌ MISSING INFORMATION — Must resolve before generating quotation</h4>
+    <ul>
+      <li>{{MISSING_ITEM_1}}</li>
+      <li>{{MISSING_ITEM_2}}</li>
+    </ul>
+  </div>
+
+  <!-- Assumptions Made -->
+  <div class="assumptions-box">
+    <h4>⚠️ ASSUMPTIONS MADE</h4>
+    <ul>
+      <li>{{ASSUMPTION_1}}</li>
+      <li>{{ASSUMPTION_2}}</li>
+    </ul>
+  </div>
+
+  <!-- Files Received -->
+  <div class="section-title">FILES RECEIVED FROM CLIENT</div>
+  <table>
+    <thead>
+      <tr><th>File Name</th><th>Type</th><th>Part Reference</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{FILE_NAME}}</td>
+        <td>{{FILE_TYPE}}</td>
+        <td>{{FILE_PART_REF}}</td>
+        <td>{{FILE_STATUS}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Internal Notes (hidden on print) -->
+  <div class="internal">
+    <h4>🔒 INTERNAL NOTES (not visible to client)</h4>
+    <p>{{INTERNAL_NOTES}}</p>
+  </div>
+
+  <!-- Approval Section -->
+  <div class="approval">
+    <h4>TEAM VERIFICATION</h4>
+    <p>Review all information above. Resolve all ❌ items before proceeding.<br>
+    Once verified, tell Claude: <strong>"approved, generate final quote"</strong> with material selection and any pricing notes.</p>
+    <p style="margin-top:8px;">Verified by: __________________ &nbsp;&nbsp; Date: __________________</p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>Elite Mold Tech | Shenzhen Elite Technology Co., Ltd</span>
+    <span>{{QUOTE_NUMBER}} | Generated: {{DATE}} | INTERNAL DOCUMENT</span>
+  </div>
+
+</div>
+</body>
+</html>

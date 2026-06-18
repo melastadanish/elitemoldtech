@@ -1,0 +1,9 @@
+storage/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+Quotation of*.xls
+memory.md
+project-overview.md
+clients/LM762.md
