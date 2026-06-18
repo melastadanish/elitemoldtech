@@ -2,15 +2,19 @@
 
 A Claude Code-powered quotation system for CNC machining, mold tooling, and 3D printing. Generates professional Step 1 (Requirement Understanding) and Step 2 (Final Quotation) documents from client files.
 
-> **Desktop only** — requires Claude Code desktop app. All quote data stays on your local machine, nothing is sent to any server.
+> Works on both **Claude Code desktop** and **claude.ai/code browser**. Desktop saves files locally. Browser generates files for immediate download.
 
 ---
 
 ## Requirements
 
-- [Claude Code](https://claude.ai/code) — desktop app or VS Code extension
-- Python 3.9+
-- macOS or Windows
+| | Desktop | Browser |
+|---|---|---|
+| Platform | Claude Code app / VS Code | [claude.ai/code](https://claude.ai/code) |
+| Files | Saved locally to `storage/` | Download immediately after generation |
+| Excel export | Auto-generated via Python script | Generated and downloaded manually |
+| Python required | Yes | No |
+| Data persists | Yes | No — download before closing |
 
 ---
 
@@ -57,7 +61,8 @@ Claude will:
 3. Generate **Step 1** — Requirement Understanding (HTML + Excel)
 4. After your review and approval → generate **Step 2** — Final Quotation (HTML)
 
-**Quotes are saved locally to:**
+### Desktop
+Quotes are saved automatically to:
 ```
 storage/YYYY-MM/EMT-[Client]-Q[###]-v[#]/
 ├── step1.html          ← Requirement understanding
@@ -65,6 +70,12 @@ storage/YYYY-MM/EMT-[Client]-Q[###]-v[#]/
 ├── step2.html          ← Final quotation
 └── notes.md            ← Session decisions and open questions
 ```
+
+### Browser (claude.ai/code)
+- Claude generates HTML inline — copy and save as `.html`
+- Claude runs the Excel export script — download the `.xlsx` immediately
+- **Download all files before closing the session — they will not persist**
+- Claude will show a download checklist at the end of each session
 
 ---
 
@@ -106,8 +117,9 @@ elitemoldtech/
 
 ## Data & Privacy
 
-- All quote data is stored in the `storage/` folder on **your local machine**
-- `storage/` is listed in `.gitignore` — it is **never pushed to GitHub**
+- **Desktop:** All quote data stored in `storage/` on your local machine only
+- **Browser:** Files exist only during the session — download immediately after generation
+- `storage/` is listed in `.gitignore` — never pushed to GitHub
 - Client files (STEP, PDF, renders) never leave your computer
 - This repo contains only the system — no business data is included
 
